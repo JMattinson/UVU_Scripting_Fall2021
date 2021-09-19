@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject tank;
-    public Vector3 offset =new Vector3(0,10,-10);
+    public GameObject player;
+    public Vector3 offset =new Vector3(0,4,-14);
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,6 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = tank.transform.position + offset;
+        transform.position = player.transform.position + offset;
     }
 }
