@@ -15,9 +15,12 @@ public class AI : MonoBehaviour
     {
         
     }
-//Dies when touched
-    void OnTriggerEnter2D(Collider2D collision)
+//Dies when touched by projectile
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(gameObject);
+        if (collider.CompareTag("Projectile"))
+         Destroy(gameObject);
+        
+        
     }
 }
