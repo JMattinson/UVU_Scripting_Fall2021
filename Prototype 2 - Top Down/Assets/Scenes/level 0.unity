@@ -267,6 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ef9a6dbc571c34599f65f10788b615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1196672621}
+  moveSpeed: 2
 --- !u!1 &910713028
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +674,10 @@ PrefabInstance:
       objectReference: {fileID: 825592359737592517, guid: e0874ee8de5bbec41a9e405c5ae14376, type: 3}
     - target: {fileID: 3231387194084951671, guid: 167d66b2cc3b9fa418df0812cd01044d, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3231387194084951671, guid: 167d66b2cc3b9fa418df0812cd01044d, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
