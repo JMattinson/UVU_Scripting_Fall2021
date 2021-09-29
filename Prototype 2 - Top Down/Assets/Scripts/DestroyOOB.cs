@@ -31,5 +31,11 @@ public class DestroyOOB : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        
+    }
+
+    void OnCollisionEnter2D(Collision2D coll) {
+        Destroy(gameObject);
     }
 }

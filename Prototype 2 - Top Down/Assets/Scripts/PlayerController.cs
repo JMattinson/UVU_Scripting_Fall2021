@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float vInput;
 
     //restraint parameters
-    public float xRange = 11.0f;
+    public float xRange = 8.0f;
     public float yRange = 4.5f;
 
     public GameObject projectile;
