@@ -16,8 +16,14 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
     private Rigidbody rb;
 
+    private Weapon weapon;
 
+    void Awake()
+    {
+        //grabbing the shooting script for ref.
+        weapon = GetComponent<Weapon>();
 
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +37,11 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         CamLook();
-
+        if(Input.GetButton("Fire1"))
+        {
+            if(weapon.CanShoot())
+                weapon.Shoot();
+        }
         
 
     }
