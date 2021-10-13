@@ -27,13 +27,13 @@ public class Weapon : MonoBehaviour
     {
 
         Cursor.lockState = CursorLockMode.Locked;
-        if (GetComponent<PlayerController>())
+        if (GetComponent<playerController>())
         isPlayer = true;
     }
 
-    public bool CanShoot()
+    public bool CanShoot() //determines if the weapon is ready to fire again
     {
-           if(Time.time - lastShootTime >= shootRate)
+           if(Time.time - lastShootTime >= shootRate)//checks to see how long it's been since the gun fired
            {
             if(curAmmo > 0 || infAmmo == true)
             return true;
@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
     public void Shoot()
     {
         //cooldown
-        lastShootTime = Time.time;
+        lastShootTime = Time.time; //makes the last time the gun fired right now.
         curAmmo--;
         // create an instance of the bullet object, at the muzzle postition/rotation.
         GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation); 
