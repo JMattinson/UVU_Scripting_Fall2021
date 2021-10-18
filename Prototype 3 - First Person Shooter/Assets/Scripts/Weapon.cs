@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    //public GameObject bulletPrefab; (old code)
+    
+    public ObjectPool bulletPool; // (New code)
 
     public Transform muzzle;
 
@@ -33,8 +35,10 @@ public class Weapon : MonoBehaviour
 
     public bool CanShoot() //determines if the weapon is ready to fire again
     {
-           if(Time.time - lastShootTime >= shootRate)//checks to see how long it's been since the gun fired
+           //checks to see how long it's been since the gun fired
+           if(Time.time - lastShootTime >= shootRate)
            {
+               //If weapon is ready, and has ammo, return true, can fire.
             if(curAmmo > 0 || infAmmo == true)
             return true;
            }
@@ -48,7 +52,13 @@ public class Weapon : MonoBehaviour
         lastShootTime = Time.time; //makes the last time the gun fired right now.
         curAmmo--;
         // create an instance of the bullet object, at the muzzle postition/rotation.
-        GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation); 
+        // GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation); (old)
+        
+        GameObject bullet = bulletPool.GetObject(); // new code, using ObjectPool script
+
+        bullet.transform.position = muzzle.position;
+        bullet.transform.rotation = muzzle.rotation;
+
         // add velocity to bullet.
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed; 
     }
