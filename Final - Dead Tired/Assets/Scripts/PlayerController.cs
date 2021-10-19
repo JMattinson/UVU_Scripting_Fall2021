@@ -6,10 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float turnSpeed;
-
-    private bool run = false;
-    private bool aim = false;
-
     public float hInput;
     public float vInput;
 
@@ -23,31 +19,45 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-// sprint check
-    if (Input.GetKey(KeyCode.LeftShift))
-    {
-        run = true;
-    } else run = false;
-// aim check
-    if (Input.GetKey(KeyCode.K))
-    {
-        aim = true;
-    } else aim = false;
+        MoveMod();
+        PlayerMove();
+    }
 
+    void PlayerMove () //Manages player movement proper, is modified by MoveMod()
+    {
+        // movement, left/right
         hInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
-        // movement, left/right
-        
-        //run modifier
-        if (run && !aim) 
-        {speed = 5.0f; }
-        else if (aim) 
-        {speed = 0.0f; }
-        else speed = 2.5f;
 
         transform.Rotate(Vector3.up, turnSpeed* hInput * Time.deltaTime );
         transform.Translate(Vector3.forward * speed * Time.deltaTime * vInput);
         
+    }
+
+    void MoveMod () //Checks if anything's changing player speed, Using AimingCheck() & RunCheck()
+    {
+        if (RunCheck() && !AimingCheck()) 
+        {speed = 5.0f; }
+        else if (AimingCheck()) 
+        {speed = 0.0f; }
+        else speed = 2.5f;
+    }
+    public bool AimingCheck ()
+    {
+        if (Input.GetKey(KeyCode.K))
+        return true;
+        else
+        return false;
+    }
+
+    public bool RunCheck()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        return true;
+        else 
+        return false;
 
     }
+
+
 }
