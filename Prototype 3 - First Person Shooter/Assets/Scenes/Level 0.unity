@@ -798,6 +798,7 @@ GameObject:
   - component: {fileID: 1510147798}
   - component: {fileID: 1510147797}
   - component: {fileID: 1510147796}
+  - component: {fileID: 1510147803}
   - component: {fileID: 1510147800}
   - component: {fileID: 1510147802}
   - component: {fileID: 1510147801}
@@ -879,7 +880,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510147795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 1.65, z: 20}
+  m_LocalPosition: {x: -0.2, y: 2.5, z: 20}
   m_LocalScale: {x: 1.6185, y: 1.6185, z: 1.6185}
   m_Children:
   - {fileID: 1875972724}
@@ -898,6 +899,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439369b3e2633b640bb9a9e1eb5a9d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curHP: 0
+  maxHP: 10
+  scoreToGive: 100
+  moveSpeed: 5
+  attackRange: 10
+  yPathOffset: 1.7
 --- !u!114 &1510147801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,6 +939,22 @@ MonoBehaviour:
   bulletSpeed: 10
   shootRate: 0.5
   lastShootTime: 0
+--- !u!54 &1510147803
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510147795}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1557808886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 818413642365685779, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
@@ -1385,6 +1408,10 @@ PrefabInstance:
       propertyPath: lastShootTime
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 818413642365685788, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 818413642365685789, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: jumpForce
       value: 3.5
@@ -1403,7 +1430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 818413642365685791, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.2
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 818413642365685791, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: m_LocalRotation.w
