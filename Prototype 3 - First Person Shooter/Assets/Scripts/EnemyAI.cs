@@ -50,6 +50,17 @@ public class EnemyAI : MonoBehaviour
             path.RemoveAt(0);
     }
     
+    public void TakeDamage(int damage)//applies damage to the AI
+    {
+        curHP -= damage;
+        if(curHP <= 0)
+            Die();
+    }
+
+    void Die()//deletes the enemy
+    {
+        Destroy(gameObject);
+    }
     void Update()
     {
         //look at target

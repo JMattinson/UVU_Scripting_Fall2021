@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e977359b602476a4190bcb26b425c5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPool: {fileID: 0}
   muzzle: {fileID: 818413641990786210}
   curAmmo: 1
   maxAmmo: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   jumpForce: 5
+  curHP: 0
+  maxHP: 0
   lookSensitivity: 2.5
   maxLookX: 75
   minLookX: -65

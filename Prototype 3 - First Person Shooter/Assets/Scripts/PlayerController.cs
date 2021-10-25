@@ -5,9 +5,13 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 
+    [Header("Stats")]
     public float moveSpeed; //Move speed in units/second
     public float jumpForce; //upward jump height
 
+    public int curHP, maxHP; //health & max possible health
+
+    [Header("Mouse Control")]
     public float lookSensitivity; //Mouse sensitivity
     public float maxLookX;  //lowest rotation for camera
     public float minLookX;  //hightest rotation for camera
@@ -31,27 +35,20 @@ public class playerController : MonoBehaviour
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void TakeDamage(int damage)//applies damage to the player
     {
-        Move();
-        CamLook();
-        if(Input.GetButton("Fire1"))
-        {
-            if(weapon.CanShoot())
-                weapon.Shoot();
-        }
+        curHP -= damage;
+        if(curHP <= 0)
+            Die();
+    }
+
+    void Die()//ends the game, when player's out of health
+    {
         
-
     }
 
-    void FixedUpdate()
-    {
-        if (Input.GetButton("Jump"))
-            Jump();
 
-    }
 
     void Move() // player movement controls
     {
@@ -93,4 +90,27 @@ public class playerController : MonoBehaviour
         
 
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        CamLook();
+        if(Input.GetButton("Fire1"))
+        {
+            if(weapon.CanShoot())
+                weapon.Shoot();
+        }
+        
+
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetButton("Jump"))
+            Jump();
+
+    }
+
+
 }
