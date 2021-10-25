@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 339250849}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 1510147801}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439369b3e2633b640bb9a9e1eb5a9d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHP: 0
+  curHP: 10
   maxHP: 10
   scoreToGive: 100
   moveSpeed: 5
@@ -974,6 +974,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPrefab: {fileID: 8736394328897905895, guid: 1992dbf18c1bdb64faa462a00dcc04a6, type: 3}
   createOnStart: 0
+--- !u!136 &1557808888
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557808886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1818497540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,6 +1398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 818413642365685779, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 818413642365685786, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: curAmmo
       value: 6
@@ -1394,7 +1412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 818413642365685786, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: maxAmmo
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 818413642365685786, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: bulletPool
@@ -1411,6 +1429,14 @@ PrefabInstance:
     - target: {fileID: 818413642365685788, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 818413642365685789, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
+      propertyPath: curHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 818413642365685789, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
+      propertyPath: maxHP
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 818413642365685789, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: jumpForce
@@ -1480,5 +1506,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.254
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
