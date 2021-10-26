@@ -4,23 +4,44 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     public float speed;
     public float turnSpeed;
     public float hInput;
     public float vInput;
 
+    [Header("Health")]
+    public int curHP;
+    public int maxHP;
 
-    // Start is called before the first frame update
-    void Start()
+     private Weapon weapon;
+    
+        void Awake()
     {
-       
+       weapon = GetComponent<Weapon>();
+       curHP = maxHP;
     }
 
-    
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+        if (curHP <= 0)
+            Die();
+    }
+    public void Die()
+    {
+        print("Dead.");
+    }
     void FixedUpdate()
     {
         MoveMod();
         PlayerMove();
+         if(AimingCheck() && Input.GetKey(KeyCode.J))//If I'm aiming & shooting
+        {
+            if(weapon.CanShoot())//fire my weapon
+                weapon.Shoot();
+        }
+        
     }
 
     void PlayerMove () //Manages player movement proper, is modified by MoveMod()
@@ -36,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     void MoveMod () //Checks if anything's changing player speed, Using AimingCheck() & RunCheck()
     {
-        if (RunCheck() && !AimingCheck()) 
+        if (RunCheck() && !AimingCheck() && vInput > 0) 
         {speed = 5.0f; }
         else if (AimingCheck()) 
         {speed = 0.0f; }
