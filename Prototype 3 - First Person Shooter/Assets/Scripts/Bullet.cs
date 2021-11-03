@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)//on collision with an object
     {
+        GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);
+        Destroy(obj, 1.0f);
         if(other.CompareTag("Player")) //if target's player
             other.GetComponent<playerController>().TakeDamage(damage);//apply damage
 
@@ -24,8 +26,7 @@ public class Bullet : MonoBehaviour
             other.GetComponent<EnemyAI>().TakeDamage(damage);//apply damage
             
         gameObject.SetActive(false);//disable self
-        GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);
-        Destroy(obj, 1.0f);
+
         
     }
     // Start is called before the first frame update
