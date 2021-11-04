@@ -17,8 +17,9 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)//on collision with an object
     {
-        GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);//create particle effect
         Destroy(obj, 1.0f);
+
         if(other.CompareTag("Player")) //if target's player
             other.GetComponent<playerController>().TakeDamage(damage);//apply damage
 
