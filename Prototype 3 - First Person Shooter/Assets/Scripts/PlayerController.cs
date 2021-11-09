@@ -6,17 +6,22 @@ public class playerController : MonoBehaviour
 {
 
     [Header("Stats")]
-    public float moveSpeed; //Move speed in units/second
-    public float jumpForce; //upward jump height
-
-    public int curHP, maxHP; //health & max possible health
+    //Move speed in units/second
+    public float moveSpeed; 
+    //upward jump height
+    public float jumpForce; 
+    //health & max possible health
+    public int curHP, maxHP; 
 
     [Header("Mouse Control")]
-    public float lookSensitivity; //Mouse sensitivity
-    public float maxLookX;  //lowest rotation for camera
-    public float minLookX;  //hightest rotation for camera
-    
-    private float rotX; //Current X rotation of the camera
+    //Mouse sensitivity
+    public float lookSensitivity; 
+    //lowest rotation for camera
+    public float maxLookX;  
+     //hightest rotation for camera
+    public float minLookX; 
+     //Current X rotation of the camera
+    private float rotX;
     private Camera camera;
     private Rigidbody rb;
 
@@ -35,22 +40,22 @@ public class playerController : MonoBehaviour
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
-    
-    public void TakeDamage(int damage)//applies damage to the player
+    //applies damage to the player
+    public void TakeDamage(int damage)
     {
         curHP -= damage;
         if(curHP <= 0)
             Die();
     }
-
-    void Die()//ends the game, when player's out of health
+    //ends the game, when player's out of health
+    void Die()
     {
         
     }
 
 
-
-    void Move() // player movement controls
+    // player movement controls
+    void Move() 
     {
         float x = Input.GetAxis("Horizontal") * moveSpeed;
         float z = Input.GetAxis("Vertical") * moveSpeed;
@@ -87,8 +92,8 @@ public class playerController : MonoBehaviour
        weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive , 0, weapon.maxAmmo); 
        
     }
-
-    void CamLook ()// mouse aim controls
+    // mouse aim controls
+    void CamLook ()
     {
         float y = Input.GetAxis("Mouse X") * lookSensitivity;
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
