@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed;
     public float hInput;
     public float vInput;
+    public float sInput;
 
     private float lastQTurn;
     public float qTurnRate;
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [Header("Health")]
     public int curHP;
     public int maxHP;
+
+    [Header("Lighting & Particles")]
+    public GameObject lazer;
 
      private Weapon weapon;
     
@@ -39,24 +43,29 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        StrafeMod();
         MoveMod();
         PlayerMove();
-         if(AimingCheck() && Input.GetKey(KeyCode.J))//If I'm aiming & shooting
+        //If I'm aiming & shooting
+         if(AimingCheck() && Input.GetKey(KeyCode.J))
         {
-            if(weapon.CanShoot())//fire my weapon
+            //fire my weapon
+            if(weapon.CanShoot())
                 weapon.Shoot();
         }
-       
-    }
 
-    void PlayerMove () //Manages player movement proper, is modified by MoveMod()
+    }
+    //Manages player movement proper, is modified by MoveMod()
+    void PlayerMove () 
     {
         // movement, left/right
         hInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
 
+
         transform.Rotate(Vector3.up, turnSpeed* hInput * Time.deltaTime);
         transform.Translate(Vector3.forward * speed * Time.deltaTime * vInput);
+        transform.Translate(Vector3.right * speed * Time.deltaTime * sInput);
         
     }
 
@@ -70,16 +79,27 @@ public class PlayerController : MonoBehaviour
         //is the player aiming?
         else if (AimingCheck()) 
         //slow player down
-        {speed = 1.5f; }
+        {
+        speed = 1.5f; 
+        turnSpeed = 50;
+        }
         //error handler
-        else speed = 2.0f;
-
+        else 
+        {
+            speed = 2.0f;
+            turnSpeed = 100;
+        }
         //is the player trying o quickturn?
         if(QuickTurn())
         {
             //pull a fast 180
             transform.Rotate(Vector3.up,-180);   
         }
+
+        if (AimingCheck())
+            lazer.SetActive(true);
+        else 
+            lazer.SetActive(false);
     }
     public bool AimingCheck ()
     {
@@ -98,6 +118,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void StrafeMod()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        sInput = -1;
+        else if (Input.GetKey(KeyCode.E))
+        sInput = 1;
+        else sInput = 0;
+    }
     public bool QuickTurn()
     {
         //this basic timer keeps the player from SPEEN, also checks for qturn button
