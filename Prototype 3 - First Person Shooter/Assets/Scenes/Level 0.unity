@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 344644102}
   - component: {fileID: 344644101}
   m_Layer: 0
-  m_Name: EGHeader
+  m_Name: EndGameHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1692,6 +1692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026014174}
   - component: {fileID: 1026014173}
+  - component: {fileID: 1026014175}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1732,6 +1733,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1026014175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026014172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26e52a8af62dad4facf15cf2ddd714e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreToWin: 3
+  curScore: 0
+  gamePaused: 0
 --- !u!1 &1179989006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Paused
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4016,6 +4032,10 @@ PrefabInstance:
     - target: {fileID: 818413642365685786, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: lastShootTime
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818413642365685788, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
+      propertyPath: m_Mass
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 818413642365685788, guid: fb70bba0073d5904fbb443b826eecde2, type: 3}
       propertyPath: m_Constraints
