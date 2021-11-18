@@ -48,7 +48,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdateAmmoText(int curAmmo, int maxAmmo)
     {
-        ammoText.text = "Ammo - " + curAmmo + " / " + maxAmmo;
+        ammoText.text = "Ammo - " + curAmmo + "/" + maxAmmo;
     }
 
     public void TogglePauseMenu(bool paused)
@@ -66,7 +66,7 @@ public class GameUI : MonoBehaviour
 
     public void OnResumeButton()
     {
-
+        GameManager.instance.TogglePauseGame();
     }
     public void OnRestartButton()
     {

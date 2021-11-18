@@ -49,8 +49,8 @@ public class EnemyAI : MonoBehaviour
         if(transform.position == path[0] + new Vector3(0, yPathOffset, 0))
             path.RemoveAt(0);
     }
-    
-    public void TakeDamage(int damage)//applies damage to the AI
+    //applies damage to the AI
+    public void TakeDamage(int damage)
     {
         curHP -= damage;
         if(curHP <= 0)
@@ -59,7 +59,9 @@ public class EnemyAI : MonoBehaviour
 
     void Die()//deletes the enemy
     {
+        GameManager.instance.AddScore(scoreToGive);
         Destroy(gameObject);
+
     }
     void Update()
     {

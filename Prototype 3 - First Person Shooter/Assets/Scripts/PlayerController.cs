@@ -39,6 +39,12 @@ public class playerController : MonoBehaviour
         //get the camera and rigidbody
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
+
+        //Initialize UI
+        GameUI.instance.UpdateHealthBar(curHP,maxHP);
+        GameUI.instance.UpdateAmmoText(weapon.curAmmo,weapon.maxAmmo);
+        GameUI.instance.UpdateScoreText(0);
+
     }
     //applies damage to the player
     public void TakeDamage(int damage)
@@ -46,11 +52,13 @@ public class playerController : MonoBehaviour
         curHP -= damage;
         if(curHP <= 0)
             Die();
+        GameUI.instance.UpdateHealthBar(curHP,maxHP);
+        
     }
     //ends the game, when player's out of health
     void Die()
     {
-        
+        GameManager.instance.LoseGame();
     }
 
 
@@ -85,12 +93,13 @@ public class playerController : MonoBehaviour
     public void GiveHealth(int amountToGive)
     {
        curHP = Mathf.Clamp(curHP + amountToGive , 0, maxHP); 
+       GameUI.instance.UpdateHealthBar(curHP,maxHP);
 
     }
     public void GiveAmmo(int amountToGive)
     {
        weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive , 0, weapon.maxAmmo); 
-       
+       GameUI.instance.UpdateAmmoText(weapon.curAmmo,weapon.maxAmmo);
     }
     // mouse aim controls
     void CamLook ()
@@ -115,6 +124,11 @@ public class playerController : MonoBehaviour
         {
             if(weapon.CanShoot())
                 weapon.Shoot();
+        }
+        //don't do anything if the game is paused
+        if(GameManager.instance.gamePaused == true)
+        {
+            return;
         }
         
 

@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour
 
     public float lastShootTime;
 
-    private bool isPlayer;
+    public bool isPlayer;
 
     
 
@@ -49,7 +49,8 @@ public class Weapon : MonoBehaviour
     public void Shoot()
     {
         //cooldown
-        lastShootTime = Time.time; //makes the last time the gun fired right now.
+        //makes the last time the gun fired right now.
+        lastShootTime = Time.time; 
         curAmmo--;
         // create an instance of the bullet object, at the muzzle postition/rotation.
         // GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation); (old)
@@ -61,6 +62,10 @@ public class Weapon : MonoBehaviour
 
         // add velocity to bullet.
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed; 
+        if(isPlayer)
+        {
+            GameUI.instance.UpdateAmmoText(curAmmo,maxAmmo);
+        }
     }
 
     // Start is called before the first frame update
