@@ -43,11 +43,12 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //calling the general movement checkers and code
         StrafeMod();
         MoveMod();
         PlayerMove();
         //If I'm aiming & shooting
-         if(AimingCheck() && Input.GetKey(KeyCode.J))
+         if(AimingCheck() && Input.GetButton("Shoot"))
         {
             //fire my weapon
             if(weapon.CanShoot())
@@ -89,13 +90,13 @@ public class PlayerController : MonoBehaviour
             speed = 2.0f;
             turnSpeed = 100;
         }
-        //is the player trying o quickturn?
+        //is the player trying to quickturn?
         if(QuickTurn())
         {
             //pull a fast 180
             transform.Rotate(Vector3.up,-180);   
         }
-
+        //turns on the lazer pointer
         if (AimingCheck())
             lazer.SetActive(true);
         else 
@@ -103,7 +104,8 @@ public class PlayerController : MonoBehaviour
     }
     public bool AimingCheck ()
     {
-        if (Input.GetKey(KeyCode.K))
+        //Is the aim key being pressed?(right bumper)
+        if (Input.GetButton("Aim"))
         return true;
         else
         return false;
@@ -111,7 +113,8 @@ public class PlayerController : MonoBehaviour
 
     public bool RunCheck()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        //is the run key being pressed? (bottom face button)
+        if (Input.GetButton("Run"))
         return true;
         else 
         return false;
@@ -120,16 +123,17 @@ public class PlayerController : MonoBehaviour
 
     public void StrafeMod()
     {
+        //are either of the strafing keys being pressed?
         if (Input.GetKey(KeyCode.Q))
         sInput = -1;
         else if (Input.GetKey(KeyCode.E))
         sInput = 1;
-        else sInput = 0;
+        else sInput = Input.GetAxis("Strafe");
     }
     public bool QuickTurn()
     {
-        //this basic timer keeps the player from SPEEN, also checks for qturn button
-        if (Input.GetKey(KeyCode.X) && Time.time - lastQTurn >= qTurnRate)
+        //this basic timer keeps the player from Spinning
+        if (Input.GetButton("Qturn") && Time.time - lastQTurn >= qTurnRate)
        {
            //yes, player is qturning
            lastQTurn = Time.time;
@@ -141,11 +145,13 @@ public class PlayerController : MonoBehaviour
     }
     public void GiveHealth(int amountToGive)
     {
+        //give the player the healthkit's set value, but limit to max health
        curHP = Mathf.Clamp(curHP + amountToGive , 0, maxHP); 
 
     }
     public void GiveAmmo(int amountToGive)
     {
+        //same as GiveHealth, but for ammo
        weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive , 0, weapon.maxAmmo); 
        
     }

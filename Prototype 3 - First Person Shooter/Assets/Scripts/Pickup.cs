@@ -8,6 +8,9 @@ public class Pickup : MonoBehaviour
     public int value;
 
     private Vector3 startPos;
+    //get audio for pickup
+    public AudioClip pickupSFX;
+
     [Header("Bobbing Animation")]
     public float rotationSpeed;
     public float bobSpeed;
@@ -48,7 +51,8 @@ public class Pickup : MonoBehaviour
                 break;
 
             }
-
+            //use the player's audiosource to play the pickup sound
+            other.GetComponent<AudioSource>().PlayOneShot(pickupSFX);
             Destroy(gameObject);
         }
     }

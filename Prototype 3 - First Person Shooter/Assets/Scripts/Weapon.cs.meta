@@ -3,7 +3,11 @@ guid: e977359b602476a4190bcb26b425c5bd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bulletPool: {instanceID: 0}
+  - muzzle: {instanceID: 0}
+  - shootSFX: {fileID: 8300000, guid: a52e80c78574f96409facf5191395428, type: 3}
+  - emptySFX: {fileID: 8300000, guid: 3f3bdee9fa63fe34d8f8b4f5c2afaa9b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

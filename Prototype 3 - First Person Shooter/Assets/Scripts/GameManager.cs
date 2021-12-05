@@ -57,11 +57,16 @@ public class GameManager : MonoBehaviour
     {
         //show the win screen
         GameUI.instance.SetEndGameScreen(true,curScore);
+        gamePaused = !gamePaused;
+        Time.timeScale = gamePaused == true ? 0.0f : 1.0f; 
+        Cursor.lockState = gamePaused == true ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     public void LoseGame()
     {
         GameUI.instance.SetEndGameScreen(false,curScore);
-        gamePaused = true;
+        gamePaused = !gamePaused;
+        Time.timeScale = gamePaused == true ? 0.0f : 1.0f; 
+         Cursor.lockState = gamePaused == true ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

@@ -23,6 +23,11 @@ public class Weapon : MonoBehaviour
 
     public bool isPlayer;
 
+    //set up audio source and clips
+    public AudioClip shootSFX;
+    public AudioClip emptySFX;
+    private AudioSource audioSource;
+
     
 
     void Awake()
@@ -31,6 +36,8 @@ public class Weapon : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         if (GetComponent<playerController>())
         isPlayer = true;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public bool CanShoot() //determines if the weapon is ready to fire again
@@ -42,7 +49,7 @@ public class Weapon : MonoBehaviour
             if(curAmmo > 0 || infAmmo == true)
             return true;
            }
-
+        
         return false;
     }
 
@@ -66,6 +73,8 @@ public class Weapon : MonoBehaviour
         {
             GameUI.instance.UpdateAmmoText(curAmmo,maxAmmo);
         }
+        //play gunshot sound effect
+        audioSource.PlayOneShot(shootSFX);
     }
 
     // Start is called before the first frame update
