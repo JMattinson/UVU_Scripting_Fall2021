@@ -21,6 +21,8 @@ public class Weapon : MonoBehaviour
 
     public float lastShootTime;
 
+    
+
     private bool isPlayer;
 
     
@@ -29,8 +31,9 @@ public class Weapon : MonoBehaviour
     {
 
         Cursor.lockState = CursorLockMode.Locked;
-        if (GetComponent<PlayerController>())
-        isPlayer = true;
+        //Checks to see if the object using this code is the player. will uncomment if needed.
+        //if (GetComponent<PlayerController>())
+        //isPlayer = true;
     }
 
     public bool CanShoot() //determines if the weapon is ready to fire again
@@ -48,6 +51,7 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
+
         //cooldown
         lastShootTime = Time.time; //makes the last time the gun fired right now.
         curAmmo--;

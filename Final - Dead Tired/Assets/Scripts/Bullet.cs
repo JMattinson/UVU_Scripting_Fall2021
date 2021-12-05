@@ -8,14 +8,22 @@ public class Bullet : MonoBehaviour
     public float lifetime;
     private float shootTime;
 
+    public GameObject hitParticle;
+    public float particleTimer;
+
     void OnEnable()
     {
-         shootTime = Time.time;
+        shootTime = Time.time;
+
 
 
     }
     void OnTriggerEnter(Collider other)//on collision with an object
     {
+        //Creates the particle effect on contact, set particle death tiemr
+        GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);//create particle effect
+        Destroy(obj, particleTimer);
+
         if(other.CompareTag("Player")) //if target's player
             other.GetComponent<PlayerController>().TakeDamage(damage);//apply damage
 

@@ -23,10 +23,12 @@ public class PlayerController : MonoBehaviour
     public GameObject lazer;
 
      private Weapon weapon;
+     public GameManager GM;
     
         void Awake()
     {
        weapon = GetComponent<Weapon>();
+       
        curHP = maxHP;
     }
 
@@ -38,8 +40,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Die()
     {
-        //placeholder, add an actual deathstate
-        print("Dead.");
+       GM.GameOver();
     }
     void FixedUpdate()
     {

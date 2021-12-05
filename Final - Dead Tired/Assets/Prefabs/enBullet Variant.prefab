@@ -87,6 +87,14 @@ PrefabInstance:
       propertyPath: damage
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4013958919975089782, guid: 7350606385b64a442a037ef081148016, type: 3}
+      propertyPath: hitParticle
+      value: 
+      objectReference: {fileID: 7368126444099312691, guid: 41d35db5993ec20478dda06ca2700119, type: 3}
+    - target: {fileID: 4013958919975089782, guid: 7350606385b64a442a037ef081148016, type: 3}
+      propertyPath: particleTimer
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4306881777544886348, guid: 7350606385b64a442a037ef081148016, type: 3}
       propertyPath: m_Name
       value: enBullet Variant
