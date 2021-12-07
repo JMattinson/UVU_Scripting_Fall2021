@@ -6,8 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
+    //basic input checks, mainly for gamepad. 
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            OnPlayButton();
+        }
+        
+        if (Input.GetButtonDown("Submit"))
+        {
+            OnQuitButton();
+           
+        }
+    }
 
-//When Play is pressed
+    //When Play is pressed
     public void OnPlayButton()
     {
         //load the game

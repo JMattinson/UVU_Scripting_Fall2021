@@ -25,6 +25,12 @@ public class PlayerController : MonoBehaviour
      private Weapon weapon;
      public GameManager GM;
     
+    void Start()
+    {
+                //Initialize UI
+        GameUI.instance.UpdateHealthBar(curHP);
+        GameUI.instance.UpdateAmmoText(weapon.curAmmo,weapon.maxAmmo);
+    }
         void Awake()
     {
        weapon = GetComponent<Weapon>();
@@ -37,6 +43,7 @@ public class PlayerController : MonoBehaviour
         curHP -= damage;
         if (curHP <= 0)
             Die();
+        GameUI.instance.UpdateHealthBar(curHP);
     }
     public void Die()
     {
@@ -54,6 +61,7 @@ public class PlayerController : MonoBehaviour
             //fire my weapon
             if(weapon.CanShoot())
                 weapon.Shoot();
+                GameUI.instance.UpdateAmmoText(weapon.curAmmo,weapon.maxAmmo);
         }
 
     }
@@ -147,13 +155,15 @@ public class PlayerController : MonoBehaviour
     public void GiveHealth(int amountToGive)
     {
         //give the player the healthkit's set value, but limit to max health
-       curHP = Mathf.Clamp(curHP + amountToGive , 0, maxHP); 
+       curHP = Mathf.Clamp(curHP + amountToGive , 0, maxHP);
+       GameUI.instance.UpdateHealthBar(curHP);
 
     }
     public void GiveAmmo(int amountToGive)
     {
         //same as GiveHealth, but for ammo
-       weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive , 0, weapon.maxAmmo); 
+       weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive , 0, weapon.maxAmmo);
+       GameUI.instance.UpdateAmmoText(weapon.curAmmo,weapon.maxAmmo); 
        
     }
 
