@@ -25,7 +25,11 @@ public class Weapon : MonoBehaviour
 
     private bool isPlayer;
 
+        //set up audio source and clips
+    [Header("Audio")]
+    public AudioClip shootSFX;
     
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -34,6 +38,8 @@ public class Weapon : MonoBehaviour
         //Checks to see if the object using this code is the player. will uncomment if needed.
         //if (GetComponent<PlayerController>())
         //isPlayer = true;
+        //get the audio source
+        audioSource = GetComponent<AudioSource>();
     }
 
     public bool CanShoot() //determines if the weapon is ready to fire again
@@ -45,7 +51,7 @@ public class Weapon : MonoBehaviour
             if(curAmmo > 0 || infAmmo == true)
             return true;
            }
-
+        
         return false;
     }
 
@@ -65,17 +71,10 @@ public class Weapon : MonoBehaviour
 
         // add velocity to bullet.
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed; 
+                //play gunshot sound effect
+        audioSource.PlayOneShot(shootSFX);
+        //print("Played" + shootSFX);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

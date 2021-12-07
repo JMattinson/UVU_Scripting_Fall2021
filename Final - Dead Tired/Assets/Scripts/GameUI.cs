@@ -49,7 +49,7 @@ public class GameUI : MonoBehaviour
     public void UpdateMissionText(int score)
     {
         if(score<3)
-        missionText.text = ("Break the generator and escape! Generators broken: " + score) +"/3";
+        missionText.text = ("Break the Generators and escape! Generators broken: " + score) +"/3";
         else
         missionText.text = ("You've broken them all, run back to the escape portal!");
     }

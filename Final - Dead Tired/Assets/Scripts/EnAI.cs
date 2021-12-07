@@ -30,6 +30,9 @@ public class EnAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool PlrInSight, PlrInAttack;
 
+    
+
+
     private void Awake()
     {
         //find the player in the scene, the navigation mesh, and the weapon script
@@ -39,6 +42,9 @@ public class EnAI : MonoBehaviour
         weapon = GetComponent<Weapon>();
         //make sure the enemy doesn't instantly go after the player
         PlrInSight = false;
+       
+        
+        
         
     }
     public void TakeDamage(int damage)
@@ -55,7 +61,10 @@ public class EnAI : MonoBehaviour
 
     public void Die()
     {
+        
+        
         Destroy(gameObject);
+        
     }
 
  // Update is called once per frame
@@ -71,6 +80,9 @@ public class EnAI : MonoBehaviour
         if (PlrInSight && !PlrInAttack) ChasePlayer();
         //If I'm in range, attack
         if (PlrInSight && PlrInAttack) AttackPlayer();
+        
+        
+
 
     }
     
