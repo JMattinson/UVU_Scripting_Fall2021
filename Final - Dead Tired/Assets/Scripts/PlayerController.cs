@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
      private Weapon weapon;
      public GameManager GM;
+
+     private LayerMask Ground;
     
     void Start()
     {
@@ -76,6 +78,12 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up, turnSpeed* hInput * Time.deltaTime);
         transform.Translate(Vector3.forward * speed * Time.deltaTime * vInput);
         transform.Translate(Vector3.right * speed * Time.deltaTime * sInput);
+
+        //basic error handler, keeps the player from glitching up wall corners
+        if(transform.position.y > 1)
+            {
+             transform.Translate(Vector3.down * speed * Time.deltaTime * 1);
+            }
         
     }
 

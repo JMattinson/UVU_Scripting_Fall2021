@@ -43,7 +43,7 @@ public class GameUI : MonoBehaviour
     //keeps track of the ammo count in the UI
     public void UpdateAmmoText(int curAmmo, int maxAmmo)
     {
-        ammoText.text = "Ammo - " + curAmmo + "/" + maxAmmo;
+        ammoText.text = "Ammo : " + curAmmo + "/" + maxAmmo;
     }
     //updates the player's mission in the UI
     public void UpdateMissionText(int score)
