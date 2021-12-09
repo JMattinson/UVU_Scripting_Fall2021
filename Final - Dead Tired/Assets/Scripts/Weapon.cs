@@ -73,7 +73,7 @@ public class Weapon : MonoBehaviour
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed; 
                 //play gunshot sound effect
         audioSource.PlayOneShot(shootSFX);
-        //print("Played" + shootSFX);
+        
     }
 
 

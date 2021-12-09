@@ -14,8 +14,9 @@ public class GameUI : MonoBehaviour
 
     public TextMeshProUGUI missionText;
 
-    [Header ("Pause Menu")]
+    [Header ("Ingame Menus")]
     public GameObject pauseMenu;
+    public GameObject contMenu;
 
 
     // Instance/Singleton
@@ -54,10 +55,17 @@ public class GameUI : MonoBehaviour
         missionText.text = ("You've broken them all, run back to the escape portal!");
     }
 
-    // brings up the pause menu if the game is paused
+    // toggles the pause menu visual
     public void TogglePauseMenu(bool paused)
     {
+        
         pauseMenu.SetActive(paused);
+    }
+
+    //toggles the control menu visual
+    public void ToggleContMenu(bool open)
+    {
+        contMenu.SetActive(open);
     }
 
 
